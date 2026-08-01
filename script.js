@@ -72,3 +72,33 @@ setInterval(()=>{
   }
 
 },700);
+const romanticTexts = [
+  "You've been on my mind lately... ❤️",
+  "Your smile is kinda addictive.",
+  "I love our random conversations.",
+  "You make ordinary moments feel special.",
+  "And honestly...",
+  "I'd really like another memory with you. ✨"
+];
+
+let textIndex = 0;
+
+setInterval(() => {
+
+  const text = document.getElementById("changingText");
+
+  text.style.opacity = 0;
+
+  setTimeout(() => {
+
+    textIndex =
+      (textIndex + 1) % romanticTexts.length;
+
+    text.textContent =
+      romanticTexts[textIndex];
+
+    text.style.opacity = 1;
+
+  }, 400);
+
+}, 2400);
