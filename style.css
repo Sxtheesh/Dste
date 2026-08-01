@@ -252,3 +252,109 @@ input{
     padding:14px 25px;
   }
 }
+.gif-box{
+  margin:15px auto 20px;
+}
+
+.gif-box img{
+  width:130px;
+  height:130px;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid rgba(255,255,255,.7);
+  box-shadow:0 10px 35px rgba(70,0,30,.35);
+}
+
+.intro{
+  color:#ffe9f1;
+  line-height:1.7;
+  font-size:14px;
+}
+
+.thought-box{
+  margin:25px auto;
+  max-width:500px;
+  min-height:85px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.2);
+  border-radius:20px;
+
+  padding:15px 25px;
+}
+
+#changingText{
+  font-family:"Great Vibes",cursive;
+  font-size:30px;
+  margin:0 15px;
+  color:#fff;
+  animation:textFade 1s ease;
+}
+
+.quote{
+  font-family:serif;
+  font-size:40px;
+  opacity:.5;
+}
+
+@keyframes textFade{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.divider{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  margin:20px;
+
+  color:#ffc2d7;
+}
+
+.divider span:nth-child(2){
+  animation:heartbeat 1.2s infinite;
+}
+
+.question{
+  line-height:1.8;
+  font-size:17px;
+}
+
+.question strong{
+  font-size:22px;
+}
+
+.success-gif img{
+  width:150px;
+  border-radius:20px;
+  margin:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+}
+
+.success-text{
+  line-height:1.8;
+}
+
+.date-title{
+  margin-top:25px;
+  font-weight:600;
+}
+
+.final-message{
+  font-size:12px;
+  line-height:1.8;
+  opacity:.7;
+  letter-spacing:1px;
+}
