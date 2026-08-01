@@ -1,10 +1,254 @@
-body{margin:0;font-family:Arial,sans-serif;overflow:hidden;background:linear-gradient(45deg,#ff4d88,#8a2be2);color:#fff}
-.bg:before{content:'';position:fixed;inset:0;background:radial-gradient(circle at top,#fff3,transparent 40%);animation:pulse 6s infinite}
-@keyframes pulse{50%{transform:scale(1.1)}}
-.container{text-align:center;padding:30px}
-h1{font-size:3rem;animation:float 2s infinite}
-@keyframes float{50%{transform:translateY(-10px)}}
-.slider img{width:min(90vw,350px);height:420px;object-fit:cover;border-radius:20px;box-shadow:0 0 25px #fff}
-button{padding:15px 30px;border:none;border-radius:50px;font-size:20px;margin:20px;cursor:pointer}
-#yes{background:#00d26a;color:#fff}#no{background:#ff4444;color:#fff;position:relative}
-.hidden{display:none}
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+
+  font-family:"Poppins",sans-serif;
+  color:white;
+
+  background:
+    radial-gradient(circle at 20% 20%,#ff8eb5 0,transparent 35%),
+    radial-gradient(circle at 80% 80%,#b62572 0,transparent 35%),
+    linear-gradient(135deg,#ff477e,#9d174d,#5b0b32);
+
+  background-size:200% 200%;
+  animation:bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.card{
+  width:min(92%,700px);
+
+  padding:45px 35px;
+
+  text-align:center;
+
+  background:rgba(255,255,255,.12);
+
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:30px;
+
+  backdrop-filter:blur(18px);
+
+  box-shadow:
+    0 25px 80px rgba(60,0,30,.4),
+    inset 0 1px rgba(255,255,255,.4);
+
+  animation:appear 1.2s ease;
+}
+
+@keyframes appear{
+  from{
+    opacity:0;
+    transform:translateY(30px) scale(.95);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.tiny-heart{
+  font-size:38px;
+  animation:heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat{
+  0%,100%{transform:scale(1);}
+  20%{transform:scale(1.25);}
+  40%{transform:scale(1);}
+  60%{transform:scale(1.18);}
+}
+
+.small{
+  font-size:13px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  opacity:.8;
+}
+
+h1{
+  font-family:"Great Vibes",cursive;
+  font-size:clamp(65px,10vw,100px);
+
+  margin:10px 0 0;
+
+  font-weight:400;
+
+  text-shadow:0 5px 25px rgba(0,0,0,.2);
+}
+
+.love-line{
+  font-family:"Great Vibes",cursive;
+  font-size:30px;
+  color:#ffe3ed;
+}
+
+.love-line span{
+  color:#ffb3cb;
+  margin:0 8px;
+}
+
+.message{
+  max-width:520px;
+  margin:25px auto;
+
+  font-size:15px;
+  line-height:1.8;
+
+  color:#ffeaf1;
+}
+
+h2{
+  font-size:clamp(25px,5vw,38px);
+  margin:25px 0 5px;
+}
+
+.cute{
+  font-size:14px;
+  opacity:.85;
+}
+
+.buttons{
+  position:relative;
+  height:100px;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+}
+
+button{
+  border:none;
+  border-radius:100px;
+
+  padding:16px 35px;
+
+  font-size:17px;
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:.3s;
+}
+
+#yes{
+  background:white;
+  color:#c2185b;
+
+  box-shadow:0 10px 35px rgba(255,255,255,.3);
+}
+
+#yes:hover{
+  transform:scale(1.12);
+}
+
+#no{
+  background:rgba(255,255,255,.15);
+  color:white;
+
+  border:1px solid rgba(255,255,255,.4);
+}
+
+#success{
+  display:none;
+  animation:appear .8s ease;
+}
+
+.big-heart{
+  font-size:80px;
+  animation:heartbeat 1s infinite;
+}
+
+#success h3{
+  font-family:"Great Vibes",cursive;
+
+  font-size:65px;
+
+  margin:0;
+
+  font-weight:400;
+}
+
+.date-box{
+  margin:25px auto;
+
+  display:flex;
+  justify-content:center;
+  gap:15px;
+
+  flex-wrap:wrap;
+}
+
+label{
+  font-size:13px;
+}
+
+input{
+  display:block;
+
+  margin-top:7px;
+
+  padding:12px;
+
+  border:none;
+  border-radius:12px;
+
+  font-family:inherit;
+}
+
+.ending{
+  font-family:"Great Vibes",cursive;
+  font-size:30px;
+}
+
+.floating-heart{
+  position:fixed;
+
+  bottom:-40px;
+
+  pointer-events:none;
+
+  animation:floatHeart linear forwards;
+
+  z-index:-1;
+}
+
+@keyframes floatHeart{
+  to{
+    transform:translateY(-115vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+@media(max-width:600px){
+
+  .card{
+    padding:30px 18px;
+  }
+
+  h1{
+    font-size:65px;
+  }
+
+  .message{
+    font-size:13px;
+  }
+
+  button{
+    padding:14px 25px;
+  }
+}
