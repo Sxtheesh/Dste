@@ -1,55 +1,74 @@
-const imgs = ['1.jpg', '2.jpg', '3.jpg', '4.jpg'];
-let i = 0;
+const yes = document.getElementById("yes");
+const no = document.getElementById("no");
+const success = document.getElementById("success");
 
-const slide = document.getElementById('slide');
-const no = document.getElementById('no');
-const yes = document.getElementById('yes');
+function moveNo(){
 
-// Change photo every 2.5 seconds
-setInterval(() => {
-    i = (i + 1) % imgs.length;
-    slide.src = '/' + imgs[i];
-}, 2500);
+  no.style.position = "fixed";
 
-// Make NO button run away 😂
-document.addEventListener('mousemove', e => {
-    const r = no.getBoundingClientRect();
+  const maxX = window.innerWidth - no.offsetWidth - 20;
+  const maxY = window.innerHeight - no.offsetHeight - 20;
 
-    const dx = e.clientX - (r.left + r.width / 2);
-    const dy = e.clientY - (r.top + r.height / 2);
+  no.style.left =
+    Math.max(10, Math.random() * maxX) + "px";
 
-    if (Math.hypot(dx, dy) < 120) {
-        no.style.position = 'fixed';
-        no.style.left =
-            Math.random() * (window.innerWidth - 120) + 'px';
-        no.style.top =
-            Math.random() * (window.innerHeight - 60) + 'px';
-    }
+  no.style.top =
+    Math.max(10, Math.random() * maxY) + "px";
+}
+
+no.addEventListener("mouseenter", moveNo);
+no.addEventListener("touchstart", moveNo);
+
+yes.addEventListener("click", () => {
+
+  document.querySelector(".message").style.display = "none";
+  document.querySelector("h2").style.display = "none";
+  document.querySelector(".cute").style.display = "none";
+  document.querySelector(".buttons").style.display = "none";
+
+  success.style.display = "block";
+
+  for(let i=0;i<60;i++){
+
+    setTimeout(createHeart,i*45);
+
+  }
+
 });
 
-// When she clicks YES ❤️
-yes.onclick = () => {
-    document.getElementById('celebrate').classList.remove('hidden');
-    document.querySelector('.buttons').style.display = 'none';
-    document.querySelector('h2').textContent = 'She Said YES! ❤️';
+function createHeart(){
 
-    // Heart animation
-    for (let j = 0; j < 120; j++) {
-        let h = document.createElement('div');
+  const heart = document.createElement("div");
 
-        h.textContent = '❤️';
-        h.style.position = 'fixed';
-        h.style.left = Math.random() * 100 + 'vw';
-        h.style.top = '-20px';
-        h.style.fontSize = (20 + Math.random() * 20) + 'px';
-        h.style.transition = '4s linear';
+  const hearts = ["❤️","💕","💗","💖","💘"];
 
-        document.body.appendChild(h);
+  heart.className = "floating-heart";
 
-        requestAnimationFrame(() => {
-            h.style.top = '110vh';
-        });
+  heart.innerHTML =
+    hearts[Math.floor(Math.random()*hearts.length)];
 
-        setTimeout(() => h.remove(), 4000);
-    }
-};
+  heart.style.left =
+    Math.random()*100 + "vw";
+
+  heart.style.fontSize =
+    15 + Math.random()*30 + "px";
+
+  heart.style.animationDuration =
+    3 + Math.random()*4 + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+    heart.remove();
+  },7000);
+}
+
+// Continuous soft background hearts
+
+setInterval(()=>{
+
+  if(Math.random() > .35){
+    createHeart();
+  }
+
+},700);
