@@ -1,0 +1,10 @@
+body{margin:0;font-family:Arial,sans-serif;overflow:hidden;background:linear-gradient(45deg,#ff4d88,#8a2be2);color:#fff}
+.bg:before{content:'';position:fixed;inset:0;background:radial-gradient(circle at top,#fff3,transparent 40%);animation:pulse 6s infinite}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.container{text-align:center;padding:30px}
+h1{font-size:3rem;animation:float 2s infinite}
+@keyframes float{50%{transform:translateY(-10px)}}
+.slider img{width:min(90vw,350px);height:420px;object-fit:cover;border-radius:20px;box-shadow:0 0 25px #fff}
+button{padding:15px 30px;border:none;border-radius:50px;font-size:20px;margin:20px;cursor:pointer}
+#yes{background:#00d26a;color:#fff}#no{background:#ff4444;color:#fff;position:relative}
+.hidden{display:none}
